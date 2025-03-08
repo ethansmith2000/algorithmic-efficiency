@@ -8,7 +8,6 @@ venv/
 workdir/
 makefile
 *.out
-*.sh
 *.swp
 */data/
 *events.out.tfevents*

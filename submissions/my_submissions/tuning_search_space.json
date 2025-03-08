@@ -1,42 +1,26 @@
 {
     "learning_rate": {
-        "feasible_points": [
-            4.131896390902391
-        ]
+        "min": 3e-5, "max": 3e-3, "scaling": "log"
     },
-    "beta1": {
-        "feasible_points": [
-            0.9274758113254791
-        ]
+    "one_minus_beta1": {
+        "min": 0.01, "max": 0.5, "scaling": "log"
     },
-    "beta2": {
-        "feasible_points": [
-            0.9978504782314613
-        ]
-    },
-    "warmup_steps": {
-        "feasible_points": [
-            6999
-        ]
-    },
-    "decay_steps_factor": {
-        "feasible_points": [
-            0.9007765761611038
-        ]
-    },
-    "end_factor": {
-        "feasible_points": [
-            0.001
-        ]
+    "warmup_factor": {
+        "feasible_points": [0.05]
     },
     "weight_decay": {
-        "feasible_points": [
-            5.6687777311501786e-6
-        ]
+        "min": 0.0001, "max": 0.1, "scaling": "log"
     },
     "label_smoothing": {
-        "feasible_points": [
-            0.2
-        ]
+        "feasible_points": [0.1, 0.2]
+    },
+    "dropout_rate": {
+        "feasible_points": [0.0, 0.1]
+    },
+    "precond_lr": {
+        "min": 0.0001, "max": 1.0, "scaling": "log"
+    },
+    "precond_init_scale": {
+        "min": 0.0001, "max": 10.0, "scaling": "log"
     }
 }
