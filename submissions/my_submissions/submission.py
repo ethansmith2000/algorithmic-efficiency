@@ -15,7 +15,7 @@ from torch.optim.lr_scheduler import SequentialLR
 from algoperf.pytorch_utils import pytorch_setup
 import torch.distributed.nn as dist_nn
 import logging
-from .adam_two_momentum_perturb import AdamTwoMomentumSAM
+from .nesterov_perturb import NesterovPerturb
 
 USE_PYTORCH_DDP = pytorch_setup()[0]
 
@@ -35,12 +35,13 @@ def init_optimizer_state(workload: spec.Workload,
 
   optimizer_state = {
       'optimizer':
-          AdamTwoMomentumSAM(
+          NesterovPerturb(
               model_params.parameters(),
               lr=hyperparameters.learning_rate,
+              perturb_lr=hyperparameters.learning_rate_perturb,
               beta1=1.0 - hyperparameters.one_minus_beta1,
-              beta1_perturb=1.0 - hyperparameters.one_minus_beta1_perturb,
               beta2=1.0 - hyperparameters.one_minus_beta2,
+              nesterov_as_perturb=hyperparameters.nesterov_as_perturb,
           )
   }
 

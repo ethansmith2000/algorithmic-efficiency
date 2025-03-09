@@ -1,15 +1,18 @@
 {
     "learning_rate": {
-        "min": 3e-5, "max": 3e-3, "scaling": "log"
+        "min": 1e-5, "max": 1e-3, "scaling": "log"
     },
     "one_minus_beta1": {
         "min": 0.01, "max": 0.5, "scaling": "log"
     },
-    "one_minus_beta1_perturb": {
-        "min": 0.01, "max": 0.5, "scaling": "log"
-    },
     "one_minus_beta2": {
         "min": 0.0005, "max": 0.05, "scaling": "log"
+    },
+    "learning_rate_perturb": {
+        "min": 1e-5, "max": 1e-3, "scaling": "log"
+    },
+    "nesterov_as_perturb": {
+        "feasible_points": [true, false]
     },
     "warmup_factor": {
         "feasible_points": [0.05]
