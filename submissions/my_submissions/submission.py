@@ -15,7 +15,7 @@ from torch.optim.lr_scheduler import SequentialLR
 from algoperf.pytorch_utils import pytorch_setup
 import torch.distributed.nn as dist_nn
 import logging
-from .kron import Kron
+from .adam_two_momentum_perturb import AdamTwoMomentumSAM
 
 USE_PYTORCH_DDP = pytorch_setup()[0]
 
@@ -35,21 +35,12 @@ def init_optimizer_state(workload: spec.Workload,
 
   optimizer_state = {
       'optimizer':
-          Kron(
+          AdamTwoMomentumSAM(
               model_params.parameters(),
               lr=hyperparameters.learning_rate,
-              b1=1.0 - hyperparameters.one_minus_beta1,
-              weight_decay=hyperparameters.weight_decay,
-              preconditioner_update_probability=0.0,
-              max_size_triangular=8192,
-              min_ndim_triangular=2,
-              memory_save_mode=None,
-              momentum_into_precond_update=True,
-              precond_lr=hyperparameters.precond_lr,
-              # precond_init_scale=hyperparameters.precond_init_scale,
-              merge_dims=True,
-              mu_dtype=None,
-              precond_dtype=None,
+              beta1=1.0 - hyperparameters.one_minus_beta1,
+              beta1_perturb=1.0 - hyperparameters.one_minus_beta1_perturb,
+              beta2=1.0 - hyperparameters.one_minus_beta2,
           )
   }
 

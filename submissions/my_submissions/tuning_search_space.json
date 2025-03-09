@@ -5,6 +5,12 @@
     "one_minus_beta1": {
         "min": 0.01, "max": 0.5, "scaling": "log"
     },
+    "one_minus_beta1_perturb": {
+        "min": 0.01, "max": 0.5, "scaling": "log"
+    },
+    "one_minus_beta2": {
+        "min": 0.0005, "max": 0.05, "scaling": "log"
+    },
     "warmup_factor": {
         "feasible_points": [0.05]
     },
@@ -16,11 +22,5 @@
     },
     "dropout_rate": {
         "feasible_points": [0.0, 0.1]
-    },
-    "precond_lr": {
-        "min": 0.0001, "max": 1.0, "scaling": "log"
-    },
-    "precond_init_scale": {
-        "min": 0.0001, "max": 10.0, "scaling": "log"
     }
 }
