@@ -1,9 +1,12 @@
 {
     "learning_rate": {
-        "min": 3e-5, "max": 3e-3, "scaling": "log"
+        "min": 1e-4, "max": 2e-2, "scaling": "log"
     },
     "one_minus_beta1": {
-        "min": 0.01, "max": 0.5, "scaling": "log"
+        "min": 0.01, "max": 0.2, "scaling": "log"
+    },
+    "one_minus_beta2": {
+        "min": 0.0005, "max": 0.05, "scaling": "log"
     },
     "warmup_factor": {
         "feasible_points": [0.05]
@@ -17,10 +20,7 @@
     "dropout_rate": {
         "feasible_points": [0.0, 0.1]
     },
-    "precond_lr": {
-        "min": 0.0001, "max": 1.0, "scaling": "log"
-    },
-    "precond_init_scale": {
-        "min": 0.0001, "max": 10.0, "scaling": "log"
+    "perturb_lr": {
+        "min": 1e-5, "max": 4e-4, "scaling": "log"
     }
 }
