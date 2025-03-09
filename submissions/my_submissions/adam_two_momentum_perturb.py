@@ -83,7 +83,7 @@ class AdamTwoMomentumSAM(torch.optim.Optimizer):
                 if "step" in state and state["step"] > 1:
                     # remove last weight decay perturbation
                     denom = state["exp_avg_sq"].sqrt().add_(group["eps"])
-                    param.data.addcdiv_(grad, denom, value=-group["lr"])
+                    param.data.addcdiv_(state["exp_avg_perturb"], denom, value=-group["lr"])
                 ############################################################
 
                 # do Adam update
